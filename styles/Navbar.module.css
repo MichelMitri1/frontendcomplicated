@@ -1,0 +1,133 @@
+.navbar__container {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  background-color: #faf9fa;
+  border-bottom: 2px solid hsla(0, 0%, 52.2%, 0.1);
+  padding: 12px 10px;
+  /* position: fixed; */
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.navbar__gone {
+  display: none;
+}
+
+.navbar__subcontainer {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  font-size: 20px;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar__sidebarButton {
+  color: #4d4dff;
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+.navbar__sidebarButton:hover {
+  opacity: 0.8;
+}
+
+.navbar__link {
+  color: white;
+  background-color: #4d4dff;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 500;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.navbar__linkUser {
+  color: white;
+  background-color: #4d4dff;
+  border: none;
+  font-weight: 500;
+  font-size: 24px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.navbar__link:hover,
+.navbar__linkUser:hover,
+.navbar__setupLink:hover,
+.navbar__registerButton:hover {
+  opacity: 0.6;
+}
+
+.navbar__setup {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar__setupLink {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 100ms ease;
+}
+
+.navbar__registerButton {
+  color: white;
+  background-color: #4d4dff;
+  border: none;
+  padding: 12px 20px;
+  font-weight: 700;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.navbar__setupLink:active,
+.navbar__registerButton:active {
+  transform: translateY(1px);
+}
+
+@media(max-width: 560px){
+  .navbar__subcontainer{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .navbar__title{
+    font-size: 19px;
+  }
+}

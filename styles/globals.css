@@ -1,0 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.stop-scrolling {
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  /* filter: blur(4px); */
+}

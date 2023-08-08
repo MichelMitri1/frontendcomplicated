@@ -1,0 +1,185 @@
+.sidebar__container {
+  width: 100%;
+  max-width: 250px;
+  overflow-y: scroll;
+  transition: all 300ms ease-in;
+  height: 600px;
+}
+
+.sidebar__wrapper {
+  transition: all 300ms ease-in;
+  max-width: 230px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.sidebar__container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar__container::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: lightgrey;
+}
+
+.sidebar__container::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #4d4dff;
+}
+
+.sidebar__startLearning {
+  border-bottom: 2px solid hsla(0, 0%, 52.2%, 0.1);
+  padding: 8px 12px 12px 0px;
+  transition: all 300ms ease;
+  align-items: center;
+  color: #4d4dff;
+  font-size: large;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+}
+
+.sidebar__week1:hover {
+  background-color: rgba(77, 77, 255, 0.1);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.sidebar__week4:hover {
+  background-color: rgba(77, 77, 255, 0.1);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.sidebar__list:hover,
+.sidebar__startLearning:hover,
+.sidebar__week2:hover,
+.sidebar__week3:hover {
+  background-color: rgba(77, 77, 255, 0.1);
+}
+
+.sidebar__dashboard {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 20px 0px 20px 8px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.sidebar__dashboard:hover {
+  background-color: rgba(77, 77, 255, 0.1);
+}
+.sidebar__weeks {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 2px solid rgba(133, 133, 133, 0.1);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.16);
+}
+
+.sidebar__week1,
+.sidebar__week2,
+.sidebar__week3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid hsla(0, 0%, 52.2%, 0.2);
+  padding: 12px;
+  cursor: pointer;
+}
+
+.sidebar__week4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.sidebar__jobGuaranteeWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 12px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.16);
+  border-radius: 8px;
+}
+
+.sidebar__week1Info,
+.sidebar__week2Info,
+.sidebar__week3Info,
+.sidebar__week4Info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: all 300ms ease;
+}
+
+.sidebar__listWrapper {
+  display: flex;
+  flex-direction: column;
+  /* gap: 18px; */
+  list-style: none;
+  padding-bottom: 8px;
+}
+
+.sidebar__weekTitle {
+  padding: 16px 0px 0px 8px;
+  color: grey;
+}
+
+.sidebar__list,
+.sidebar__listLocked {
+  padding: 16px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+.sidebar__listLocked {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 300ms ease;
+}
+
+.sidebar__listLocked:hover {
+  background-color: rgba(133, 133, 133, 0.1);
+}
+
+.sidebar__locked {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: lightgrey;
+}
+
+.sidebar__jobGuaranteePara {
+  font-size: 14px;
+  line-height: 1.5;
+  color: grey;
+}
+
+.sidebar__learnMoreButton {
+  color: white;
+  background-color: #4d4dff;
+  border: none;
+  padding: 8px 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.sidebar__learnMoreButton:hover {
+  opacity: 0.7;
+}
+
+.sidebar__learnMoreButton:active {
+  transform: translateY(1px);
+}

@@ -1,0 +1,237 @@
+.videoSection__videoWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  max-width: 1200px;
+  padding: 0px 10px;
+}
+
+.videoSection__buttonsWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.videoSection__button1,
+.videoSection__button2 {
+  border: none;
+  height: 40px;
+  padding: 0px 30px;
+  cursor: pointer;
+  transition: all 100ms ease;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.videoSection__button1:hover,
+.videoSection__button2:hover,
+.videoSection__bootcampButton:hover,
+.videoSection__courseReviews:hover,
+.videoSection__lessonCompleted:hover {
+  opacity: 0.7;
+}
+
+.videoSection__button1:active,
+.videoSection__button2:active,
+.videoSection__bootcampButton:active,
+.videoSection__lessonCompleted:active {
+  transform: translateY(1px);
+}
+
+.videoSection__button2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background-color: #4d4dff;
+}
+
+.videoSection__videoInfoWrapper {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: large;
+}
+
+.videoSection__videoInfoTitle {
+  color: #4d4dff;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.477);
+  padding-bottom: 12px;
+}
+
+.videoSection__videoInfoPara {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.477);
+  padding-bottom: 32px;
+}
+
+.videoSection__videoInfo2 {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.477);
+  padding-bottom: 32px;
+}
+
+.videoSection__lessonCompleted {
+  justify-content: space-between;
+  transition: all 100ms ease;
+  align-items: center;
+  border-radius: 4px;
+  padding: 0px 32px;
+  font-weight: bold;
+  color: #4bb543;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  border: none;
+  gap: 8px;
+}
+
+.videoSection__bootcampButton {
+  height: 56px;
+  color: white;
+  background: #4d4dff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+.videoSection__courseReviews {
+  display: flex;
+  gap: 8px;
+  color: #4d4dff;
+  text-decoration: none;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #4d4dff;
+  width: fit-content;
+  transition: all 100ms ease;
+}
+
+.videoSection__resourcesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.videoSection__resourcesWrapper {
+  display: flex;
+  align-items: center;
+  max-width: 440px;
+  border: none;
+  background: none;
+  padding: 12px;
+  gap: 12px;
+  transition: all 300ms ease;
+}
+
+.videoSection__videoNone {
+  width: 100%;
+  height: 726px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 32px auto;
+}
+
+.videoSection__videoLockedTitle,
+.videoSection__videoLockedPara,
+.videoSection__videoLock {
+  color: white;
+  text-align: center;
+}
+
+.videoSection__videoLock {
+  font-size: 40px;
+}
+
+.videoSection__videoButtonsWrapper {
+  display: flex;
+  gap: 32px;
+}
+
+.videoSection__loginButton,
+.videoSection__registerButton {
+  border: none;
+  height: 40px;
+  font-size: 16px;
+  border-radius: 4px;
+  padding: 0px 24px;
+  cursor: pointer;
+  transition: all 100ms ease;
+}
+
+.videoSection__loginButton {
+  color: white;
+  background-color: hsla(0, 0%, 100%, 0.24);
+}
+
+.videoSection__registerButton {
+  color: black;
+}
+
+.videoSection__loginButton:hover,
+.videoSection__registerButton:hover {
+  opacity: 0.7;
+}
+
+.videoSection__loginButton:active,
+.videoSection__registerButton:active {
+  transform: translateY(1px);
+}
+
+.videoSection__resourceInfoWrapper {
+  text-align: start;
+}
+
+.videoSection__resourcesWrapper:active {
+  transform: translateY(1px);
+}
+
+.videoSection__resourcesWrapper:hover {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.videoSection__resourceInfoTitle {
+  text-align: start;
+  font-size: 16px;
+}
+
+.videoSection__resourceInfoTitle2 {
+  color: #4d4dff;
+  text-align: start;
+  font-size: 16px;
+}
+
+.videoSection__resourceInfoPara {
+  font-size: 15px;
+  text-align: start;
+  color: gray;
+  margin-top: 8px;
+}
+
+@media (max-width: 980px) {
+  .videoSection__video {
+    height: 550px;
+  }
+}
+
+@media (max-width: 700px) {
+  .videoSection__video {
+    height: 400px;
+  }
+}
+
+@media (max-width: 450px) {
+  .videoSection__video {
+    height: 250px;
+  }
+}

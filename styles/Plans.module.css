@@ -1,0 +1,79 @@
+.plan__container {
+  width: 100%;
+  max-width: 880px;
+  margin: 56px auto 0;
+}
+
+.plan__wrapper {
+  display: grid;
+  grid-template-columns: 320px repeat(2, 1fr);
+  position: sticky;
+  top: 0;
+  font-size: 20px;
+  justify-items: center;
+  background: #f7f7f7;
+  padding: 24px 0px;
+}
+
+.plan__free {
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plan__paid {
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.plan__freeButton {
+  border: none;
+  height: 40px;
+  background-color: rgba(64, 87, 109, 0.07);
+  color: rgba(43, 59, 74, 0.3);
+  cursor: not-allowed;
+  font-size: 15px;
+  max-width: 200px;
+}
+
+.plan__paidButton {
+  color: white;
+  background-color: #4d4dff;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 100ms ease;
+}
+
+.plan__paidButton:hover {
+  opacity: 0.7;
+}
+
+.plan__paidButton:active {
+  transform: translateY(1px);
+}
+
+.plan__comparison {
+  display: grid;
+  grid-template-columns: 320px repeat(2, 1fr);
+  height: 70px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.plan__new {
+  font-size: 13px;
+  margin-left: 8px;
+  color: black;
+  background-color: #e8cd44;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+}
