@@ -87,20 +87,24 @@
 
 .videoSection__videoInfoPara {
   border-bottom: 1px solid rgba(128, 128, 128, 0.477);
-  padding-bottom: 32px;
+  padding: 24px 0px;
 }
 
 .videoSection__videoInfo2 {
   border-bottom: 1px solid rgba(128, 128, 128, 0.477);
-  padding-bottom: 32px;
+  padding-bottom: 24px;
 }
 
+.videoSection__videoInfo {
+  padding: 24px 0px;
+}
 .videoSection__lessonCompleted {
   justify-content: space-between;
   transition: all 100ms ease;
   align-items: center;
   border-radius: 4px;
   padding: 0px 32px;
+  height: 40px;
   font-weight: bold;
   color: #4bb543;
   font-size: 16px;
