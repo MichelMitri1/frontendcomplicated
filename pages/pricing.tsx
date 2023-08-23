@@ -31,9 +31,7 @@ function Pricing() {
         Complicated
       </nav>
       <div className={pricingStyles.pricing__wrapper}>
-        <h1
-          className={pricingStyles.pricing__title}
-        >
+        <h1 className={pricingStyles.pricing__title}>
           Crush your coding goals with our results-driven plans
         </h1>
         <div className={pricingStyles.pricing__plansWrapper}>

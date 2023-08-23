@@ -3,13 +3,24 @@ import NavbarStyles from "../styles/Navbar.module.css";
 import { FaCrown } from "react-icons/fa";
 import { auth } from "../public/firebase.js";
 import { Dispatch, useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { NextRouter, useRouter } from "next/router";
 import Link from "next/link";
 
 function Navbar({ setIsModal, setIsLogin, user, setIsSidebar, isSidebar }) {
   const router: NextRouter = useRouter();
   const [, setUser]: [any, Dispatch<any>] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  // auth.signOut();
+
+  function openMenu() {
+    setMenuOpen(true);
+  }
+
+  function signOutUser() {
+    signOut(auth);
+    router.push("/");
+  }
 
   function loginUser(): void {
     setIsModal(true);
@@ -45,7 +56,10 @@ function Navbar({ setIsModal, setIsLogin, user, setIsSidebar, isSidebar }) {
             className={NavbarStyles.navbar__sidebarButton}
             onClick={() => openSidebar()}
           />
-          <p className={NavbarStyles.navbar__title}>
+          <p
+            className={NavbarStyles.navbar__title}
+            onClick={() => router.push("/")}
+          >
             <span style={{ fontWeight: "900" }}> {"</>"} Frontend </span>
             Complicated
           </p>
@@ -60,12 +74,36 @@ function Navbar({ setIsModal, setIsLogin, user, setIsSidebar, isSidebar }) {
                 Job Guarantee <FaCrown style={{ color: "#fabf2a" }} />
               </button>
               {user.displayName !== null ? (
-                <button
-                  className={NavbarStyles.navbar__linkUser}
-                  onClick={() => auth.signOut()}
-                >
-                  {user.displayName.charAt(0)}
-                </button>
+                <div className={NavbarStyles.navbar__accountWrapper}>
+                  <button
+                    className={NavbarStyles.navbar__linkUser}
+                    onClick={() => openMenu()}
+                  >
+                    {user.displayName.charAt(0)}
+                  </button>
+                  {menuOpen ? (
+                    <div className={NavbarStyles.navbar__menuWrapper}>
+                      <button
+                        className={NavbarStyles.navbar__menuButton}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        Close
+                      </button>
+                      <button
+                        className={NavbarStyles.navbar__menuButton}
+                        onClick={() => router.push("/account")}
+                      >
+                        Account
+                      </button>
+                      <button
+                        className={NavbarStyles.navbar__menuButton}
+                        onClick={() => signOutUser()}
+                      >
+                        Logout
+                      </button>
+                    </div>
+                  ) : null}
+                </div>
               ) : null}
             </>
           ) : (

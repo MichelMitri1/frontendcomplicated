@@ -14,6 +14,10 @@
   display: none;
 }
 
+.navbar__title{
+  cursor: pointer;
+}
+
 .navbar__subcontainer {
   width: 100%;
   max-width: 1450px;
@@ -99,6 +103,35 @@
   transition: all 100ms ease;
 }
 
+.navbar__menuWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+  padding: 8px;
+  z-index: 0;
+  background-color: white;
+  gap: 8px;
+  position: fixed;
+}
+
+.navbar__menuButton {
+  border: none;
+  background-color: #4d4dff;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px 12px;
+  color: white;
+  transition: all 100ms ease;
+  font-weight: bold;
+}
+
+.navbar__accountWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar__registerButton {
   color: white;
   background-color: #4d4dff;
@@ -119,15 +152,15 @@
   transform: translateY(1px);
 }
 
-@media(max-width: 560px){
-  .navbar__subcontainer{
+@media (max-width: 560px) {
+  .navbar__subcontainer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 12px;
   }
 
-  .navbar__title{
+  .navbar__title {
     font-size: 19px;
   }
 }

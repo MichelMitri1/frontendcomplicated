@@ -1,6 +1,11 @@
-.wrapper {
-  display: flex;
+.wrapper1 {
+  /* display: flex;
   justify-content: center;
+  gap: 24px; */
+}
+
+.wrapper2{
+  display: flex;
   gap: 24px;
 }
 

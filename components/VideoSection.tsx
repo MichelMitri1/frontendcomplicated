@@ -14,6 +14,7 @@ import {
 import { BiLockAlt } from "react-icons/bi";
 import { AiOutlineCheck } from "react-icons/ai";
 import Link from "next/link";
+import { data } from "../data.js";
 
 function VideoSection({ user, setIsModal, setIsLogin }) {
   const userInfo = auth.currentUser;
@@ -21,6 +22,7 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
   const [docs, setDocs] = useState([]);
   let found: any;
   const [isLoadingButton, setIsLoadingButton] = useState(false);
+  const [counter, setCounter] = useState(1);
 
   async function getAllVideos() {
     const q = query(collection(db, "videos"));
@@ -33,9 +35,27 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
     getAllVideos();
   }, []);
 
+  function nextVideo() {
+    if (counter >= data[data.length - 1].id) {
+      alert("there are no more videos");
+      return;
+    } else {
+      setCounter(counter + 1);
+    }
+  }
+
+  function previousVideo() {
+    if (counter <= 1) {
+      alert("There is no previous video you can watch");
+      return;
+    } else {
+      setCounter(counter - 1);
+    }
+  }
+
   async function markComplete() {
     setIsLoadingButton(false);
-    found = docs.find((id) => id.userId == userInfo.uid);
+    found = docs.find((id) => id.userId === userInfo.uid);
     let codedId = found.id;
     const markCompleted = doc(db, "videos", codedId);
     if (!completed) {
@@ -66,17 +86,31 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
   return (
     <div className={videoSectionStyles.videoSection__container}>
       <div className={videoSectionStyles.videoSection__videoWrapper}>
+        {counter === 1 ? null : (
+          <button
+            className={videoSectionStyles.videoSection__backButton}
+            onClick={() => previousVideo()}
+          >
+            Back
+          </button>
+        )}
         {user ? (
-          <iframe
-            src="https://player.vimeo.com/video/833236557?h=39bef521f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-            width="100%"
-            height="726px"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            title="Biggest Miss"
-            className={videoSectionStyles.videoSection__video}
-          ></iframe>
+          data
+            ?.filter((data) => +data.id === +counter)
+            .map((data: any) => {
+              return (
+                <iframe
+                  src={data.src}
+                  width="100%"
+                  height="726px"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowFullScreen
+                  title={data.title}
+                  className={videoSectionStyles.videoSection__video}
+                ></iframe>
+              );
+            })
         ) : (
           <div className={videoSectionStyles.videoSection__videoNone}>
             <BiLockAlt className={videoSectionStyles.videoSection__videoLock} />
@@ -136,30 +170,38 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
             </button>
           )}
 
-          <button className={videoSectionStyles.videoSection__button2}>
+          <button
+            className={videoSectionStyles.videoSection__button2}
+            onClick={() => nextVideo()}
+          >
             Next Lesson <AiOutlineRight />
           </button>
         </div>
         <div className={videoSectionStyles.videoSection__videoInfoWrapper}>
-          <h1 className={videoSectionStyles.videoSection__videoInfoTitle}>
-            Rocket League Video
-          </h1>
-          <p className={videoSectionStyles.videoSection__videoInfoPara}>
-            {/* In this video you can witness the biggest miss in the history of
-            Rocket League. Have a great laugh. */}
-            In this video you will be starting your programming journey by
-            learning the fundamentals of HTML. This crash course will teach you
-            all the HTML theory you need to know to build websites on your own
-            and make $100,000+ as a frontend developer.
-          </p>
-          <p className={videoSectionStyles.videoSection__videoInfo}>
-            Instructor(s):{" "}
-            <span style={{ color: "#4d4dff" }}>Michel Mitri, Jack Wehbe</span>
-          </p>
-          <p className={videoSectionStyles.videoSection__videoInfo2}>
-            Current Attendees:
-            <span style={{ color: "#4d4dff" }}> 10,392,458,710</span>
-          </p>
+          {data
+            .filter((doc) => +doc.id === +counter)
+            .map((doc) => {
+              return (
+                <>
+                  <h1
+                    className={videoSectionStyles.videoSection__videoInfoTitle}
+                  >
+                    {doc.videoDescription}
+                  </h1>
+                  <p className={videoSectionStyles.videoSection__videoInfoPara}>
+                    {doc.description}
+                  </p>
+                  <p className={videoSectionStyles.videoSection__videoInfo}>
+                    Instructor(s):{" "}
+                    <span style={{ color: "#4d4dff" }}>{doc.instructors}</span>
+                  </p>
+                  <p className={videoSectionStyles.videoSection__videoInfo2}>
+                    Current Attendees:
+                    <span style={{ color: "#4d4dff" }}> {doc.attendees}</span>
+                  </p>
+                </>
+              );
+            })}
           <button
             className={videoSectionStyles.videoSection__bootcampButton}
             onClick={() => router.push("/pricing")}
@@ -253,3 +295,24 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
 }
 
 export default VideoSection;
+
+// <iframe
+//   src="https://player.vimeo.com/video/854596225?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+//   width="100%"
+//   height="726px"
+//   frameBorder="0"
+//   allow="autoplay; fullscreen; picture-in-picture"
+//   className={videoSectionStyles.videoSection__video}
+//   title="dont buy no weed from the gas station"
+// ></iframe>
+
+// <iframe
+//   src="https://player.vimeo.com/video/833236557?h=39bef521f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+//   width="100%"
+//   height="726px"
+//   frameBorder="0"
+//   allow="autoplay; fullscreen; picture-in-picture"
+//   allowFullScreen
+//   title="Biggest Miss"
+//   className={videoSectionStyles.videoSection__video}
+// ></iframe>

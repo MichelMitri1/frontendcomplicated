@@ -1,0 +1,59 @@
+.forgotPass__container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.forgotPass__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.forgotPass__para {
+  color: rgba(128, 128, 128, 0.7);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.forgotPass__inputPass {
+  width: 100%;
+  max-width: 900px;
+  height: 40px;
+  padding: 12px;
+  outline: none;
+  border: 1px solid lightgray;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: all 200ms ease;
+}
+
+.forgotPass__inputPass:focus {
+  border: 1px solid #4d4dff;
+}
+
+.forgotPass__continue {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 100ms ease;
+  font-size: 15px;
+  color: white;
+  background: #4d4dff;
+}
+
+.forgotPass__continue:hover {
+  opacity: 0.7;
+}
+
+.forgotPass__continue:active {
+  transform: translateY(1px);
+}

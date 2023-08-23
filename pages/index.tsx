@@ -3,7 +3,7 @@ import Modal from "../components/Modal";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 import { auth } from "../public/firebase";
-import { GoogleAuthProvider } from "firebase/auth";
+import { Auth, GoogleAuthProvider } from "firebase/auth";
 import { AuthStateHook, useAuthState } from "react-firebase-hooks/auth";
 import VideoSection from "../components/VideoSection";
 import Sidebar from "../components/Sidebar";
@@ -15,9 +15,10 @@ export default function Home() {
     boolean,
     Dispatch<SetStateAction<boolean>>
   ] = useState(false);
-  const [isLogin, setIsLogin]: [boolean, Dispatch<SetStateAction<boolean>>] =
-    useState(true);
+  const [isLogin, setIsLogin]: any = useState(true);
   const [user, setUser]: AuthStateHook = useAuthState(auth);
+  const [passwordModal, setPasswordModal] = useState(false);
+  const [forgotPassword, setForgotPassword] = useState(false);
   const googleAuth: GoogleAuthProvider = new GoogleAuthProvider();
 
   // if (isModal) {
@@ -37,20 +38,23 @@ export default function Home() {
         setIsSidebar={setIsSidebar}
         isSidebar={isSidebar}
       />
-      <div className={styles.wrapper}>
+      <div className={!isSidebar ? styles.wrapper1 : styles.wrapper2}>
         {isModal ? (
           <Modal
             isLogin={isLogin}
+            passwordModal={passwordModal}
+            setPasswordModal={setPasswordModal}
+            forgotPassword={forgotPassword}
+            setForgotPassword={setForgotPassword}
             setIsLogin={setIsLogin}
             setIsModal={setIsModal}
+            isModal={isModal}
             user={user}
             setUser={setUser}
             auth={auth}
-            googleAuth={googleAuth}
           />
         ) : null}
-        {/* <div className={styles.frontPage}> */}
-        {isSidebar ? <Sidebar /> : null}
+        {isSidebar ? <Sidebar user={user} /> : null}
         <VideoSection
           user={user}
           setIsModal={setIsModal}

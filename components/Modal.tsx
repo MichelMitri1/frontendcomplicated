@@ -4,6 +4,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import Register from "./Register";
 import Image from "next/image";
 import Login from "./Login";
+import PassModal from "./PassModal";
+import ForgotPass from "./ForgotPass";
 
 function Modal({
   isLogin,
@@ -11,21 +13,44 @@ function Modal({
   setIsModal,
   user,
   setUser,
+  forgotPassword,
+  setForgotPassword,
   auth,
-  googleAuth,
+  passwordModal,
+  setPasswordModal,
+  isModal,
 }) {
+  function setModalFalse() {
+    if (passwordModal) {
+      setPasswordModal(false);
+    } else if (isModal) {
+      setIsModal(false);
+    }
+  }
+
   return (
     <>
       <div className={modalStyles.modal__container}>
         <div className={modalStyles.modal__subcontainer}>
-          {isLogin ? (
+          {passwordModal ? (
+            forgotPassword ? (
+              <ForgotPass
+                forgotPassword={forgotPassword}
+                setForgotPassword={setForgotPassword}
+              />
+            ) : (
+              <PassModal
+                forgotPassword={forgotPassword}
+                setForgotPassword={setForgotPassword}
+              />
+            )
+          ) : isLogin ? (
             <Login
               isLogin={isLogin}
               setIsLogin={setIsLogin}
               user={user}
               setUser={setUser}
               auth={auth}
-              googleAuth={googleAuth}
               setIsModal={setIsModal}
             />
           ) : (
@@ -40,7 +65,7 @@ function Modal({
             <Image src={loginPic} alt="" className={modalStyles.modal__img} />
             <AiOutlineClose
               className={modalStyles.modal__closeButton}
-              onClick={() => setIsModal(false)}
+              onClick={() => setModalFalse()}
             />
           </figure>
         </div>

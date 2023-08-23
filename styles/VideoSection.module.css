@@ -1,10 +1,14 @@
+.videoSection__container {
+  width: 100%;
+}
+
 .videoSection__videoWrapper {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   justify-content: center;
   max-width: 1200px;
-  padding: 0px 10px;
+  padding: 10px;
 }
 
 .videoSection__buttonsWrapper {
@@ -53,6 +57,26 @@
   flex-direction: column;
   gap: 24px;
   font-size: large;
+}
+
+.videoSection__backButton {
+  color: white;
+  background-color: #4d4dff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  height: 30px;
+  max-width: 70px;
+  transition: all 100ms ease;
+}
+
+.videoSection__backButton:hover {
+  opacity: 0.7;
+}
+
+.videoSection__backButton:active {
+  transform: translateY(1px);
 }
 
 .videoSection__videoInfoTitle {

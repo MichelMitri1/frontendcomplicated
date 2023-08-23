@@ -6,11 +6,18 @@
   height: 600px;
 }
 
+@media (max-width: 530px) {
+  .sidebar__container {
+    position: fixed;
+    background-color: white;
+  }
+}
+
 .sidebar__wrapper {
   transition: all 300ms ease-in;
-  max-width: 230px;
   display: flex;
   flex-direction: column;
+  margin: 0;
   gap: 28px;
 }
 
@@ -30,14 +37,13 @@
 
 .sidebar__startLearning {
   border-bottom: 2px solid hsla(0, 0%, 52.2%, 0.1);
-  padding: 8px 12px 12px 0px;
+  padding: 12px 12px 12px 0px;
   transition: all 300ms ease;
   align-items: center;
   color: #4d4dff;
-  font-size: large;
   cursor: pointer;
   display: flex;
-  gap: 12px;
+  gap: 8px;
 }
 
 .sidebar__week1:hover {
@@ -77,25 +83,6 @@
   border-radius: 8px;
   border: 2px solid rgba(133, 133, 133, 0.1);
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.16);
-}
-
-.sidebar__week1,
-.sidebar__week2,
-.sidebar__week3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 3px solid hsla(0, 0%, 52.2%, 0.2);
-  padding: 12px;
-  cursor: pointer;
-}
-
-.sidebar__week4 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px;
-  cursor: pointer;
 }
 
 .sidebar__jobGuaranteeWrapper {
@@ -182,4 +169,14 @@
 
 .sidebar__learnMoreButton:active {
   transform: translateY(1px);
+}
+
+.MuiTypography-root,
+.MuiTypography-body1,
+.css-ahj2mt-MuiTypography-root {
+  display: flex;
+}
+
+.css-15v22id-MuiAccordionDetails-root {
+  padding: 0;
 }

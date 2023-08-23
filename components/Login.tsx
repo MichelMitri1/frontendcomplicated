@@ -6,10 +6,10 @@ import React, {
   useState,
 } from "react";
 import modalStyles from "../styles/Modal.module.css";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { AiOutlineClose } from "react-icons/ai";
 
-function Login({ setIsLogin, auth, googleAuth, setIsModal }) {
+function Login({ setIsLogin, auth, setIsModal }): any {
   const userEmail = useRef("") as unknown as MutableRefObject<HTMLInputElement>;
   const userPass = useRef("") as unknown as MutableRefObject<HTMLInputElement>;
   const [userLoggingIn, setUserLoggingIn]: [
@@ -34,6 +34,7 @@ function Login({ setIsLogin, auth, googleAuth, setIsModal }) {
       setIsModal(false);
     } catch (error) {
       alert(error);
+      setUserLoggingIn(false);
     }
   }
 
