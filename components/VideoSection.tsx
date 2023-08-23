@@ -97,9 +97,10 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
         {user ? (
           data
             ?.filter((data) => +data.id === +counter)
-            .map((data: any) => {
+            .map((data: any, index: any) => {
               return (
                 <iframe
+                  key={index}
                   src={data.src}
                   width="100%"
                   height="726px"
@@ -142,8 +143,8 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
           {user ? (
             docs
               .filter((id) => id.userId === userInfo.uid)
-              .map((doc) => (
-                <>
+              .map((doc, index) => (
+                <div key={index}>
                   {doc.isCompleted ? (
                     <button
                       onClick={() => markComplete()}
@@ -162,7 +163,7 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
                       Mark Complete
                     </button>
                   )}
-                </>
+                </div>
               ))
           ) : (
             <button className={videoSectionStyles.videoSection__button1}>
@@ -180,9 +181,9 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
         <div className={videoSectionStyles.videoSection__videoInfoWrapper}>
           {data
             .filter((doc) => +doc.id === +counter)
-            .map((doc) => {
+            .map((doc, index) => {
               return (
-                <>
+                <div key={index}>
                   <h1
                     className={videoSectionStyles.videoSection__videoInfoTitle}
                   >
@@ -199,7 +200,7 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
                     Current Attendees:
                     <span style={{ color: "#4d4dff" }}> {doc.attendees}</span>
                   </p>
-                </>
+                </div>
               );
             })}
           <button

@@ -15,7 +15,7 @@ import { User, onAuthStateChanged } from "firebase/auth";
 import Modal from "../components/Modal";
 import Sidebar from "../components/Sidebar";
 
-function account() {
+function Account() {
   const user: User = auth.currentUser;
   const [editorOpen, setEditorOpen] = useState(false);
   const [, setUser] = useState(null);
@@ -160,4 +160,4 @@ function account() {
   );
 }
 
-export default account;
+export default Account;

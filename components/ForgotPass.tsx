@@ -13,7 +13,8 @@ function ForgotPass({ forgotPassword, setForgotPassword }) {
         Forgot your password?
       </h2>
       <p className={forgotPassStyles.forgotPass__para}>
-        Dont worry, we'll send you a message to help you reset your password.
+        Dont worry, we&apos;ll send you a message to help you reset your
+        password.
       </p>
       <span>
         <p
@@ -32,7 +33,9 @@ function ForgotPass({ forgotPassword, setForgotPassword }) {
           placeholder="jane@example.com"
         />
       </span>
-      <button className={forgotPassStyles.forgotPass__continue}>Continue</button>
+      <button className={forgotPassStyles.forgotPass__continue}>
+        Continue
+      </button>
     </div>
   );
 }

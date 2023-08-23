@@ -28,9 +28,12 @@ function PassModal({ forgotPassword, setForgotPassword }) {
         onSubmit={(e) => loginUser(e)}
         className={passwordStyles.password__wrapper}
       >
-        <h2 className={passwordStyles.password__header}>Verify it's you</h2>
+        <h2 className={passwordStyles.password__header}>
+          Verify it&apos;s you
+        </h2>
         <p className={passwordStyles.password__subHeader}>
-          To ensure your security, we want to make sure that it's really you.
+          To ensure your security, we want to make sure that it&apos;s really
+          you.
         </p>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <p
