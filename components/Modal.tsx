@@ -46,21 +46,13 @@ function Modal({
             )
           ) : isLogin ? (
             <Login
-              isLogin={isLogin}
               setIsLogin={setIsLogin}
-              user={user}
-              setUser={setUser}
               auth={auth}
               setIsModal={setIsModal}
             />
           ) : (
-            <Register
-              isLogin={isLogin}
-              setIsLogin={setIsLogin}
-              setIsModal={setIsModal}
-            />
+            <Register setIsLogin={setIsLogin} setIsModal={setIsModal} />
           )}
-
           <figure className={modalStyles.modal__imgWrapper}>
             <Image src={loginPic} alt="" className={modalStyles.modal__img} />
             <AiOutlineClose
@@ -76,3 +68,17 @@ function Modal({
 }
 
 export default Modal;
+
+// }: {
+//   isLogin: any;
+//   setIsLogin: any;
+//   setIsModal: any;
+//   user: any;
+//   setUser: any;
+//   forgotPassword: any;
+//   setForgotPassword: any;
+//   auth: any;
+//   passwordModal: any;
+//   setPasswordModal: any;
+//   isModal: any;
+// }

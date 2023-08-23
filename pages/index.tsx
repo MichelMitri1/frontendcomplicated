@@ -3,7 +3,7 @@ import Modal from "../components/Modal";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 import { auth } from "../public/firebase";
-import { Auth, GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import { AuthStateHook, useAuthState } from "react-firebase-hooks/auth";
 import VideoSection from "../components/VideoSection";
 import Sidebar from "../components/Sidebar";
