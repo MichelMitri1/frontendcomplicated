@@ -11,8 +11,6 @@ function Modal({
   isLogin,
   setIsLogin,
   setIsModal,
-  user,
-  setUser,
   forgotPassword,
   setForgotPassword,
   auth,
@@ -40,7 +38,7 @@ function Modal({
               />
             ) : (
               <PassModal
-                forgotPassword={forgotPassword}
+                setPasswordModal={setPasswordModal}
                 setForgotPassword={setForgotPassword}
               />
             )

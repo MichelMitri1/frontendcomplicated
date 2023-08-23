@@ -49,8 +49,6 @@ export default function Home() {
             setIsLogin={setIsLogin}
             setIsModal={setIsModal}
             isModal={isModal}
-            user={user}
-            setUser={setUser}
             auth={auth}
           />
         ) : null}

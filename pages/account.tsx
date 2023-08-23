@@ -25,6 +25,7 @@ function Account() {
   const [passwordModal, setPasswordModal] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [isSidebar, setIsSidebar] = useState(false);
+  const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user: any) => {
@@ -57,11 +58,9 @@ function Account() {
               setPasswordModal={setPasswordModal}
               isLogin={undefined}
               setIsLogin={undefined}
-              setIsModal={undefined}
-              user={undefined}
-              setUser={undefined}
+              setIsModal={setIsModal}
               auth={undefined}
-              isModal={undefined}
+              isModal={isModal}
               forgotPassword={forgotPassword}
               setForgotPassword={setForgotPassword}
             />

@@ -2,8 +2,9 @@ import passwordStyles from "../styles/Password.module.css";
 import React, { useRef, useState } from "react";
 import { auth } from "../public/firebase";
 import { User } from "firebase/auth";
+import { AiOutlineClose } from "react-icons/ai";
 
-function PassModal({ forgotPassword, setForgotPassword }) {
+function PassModal({ setForgotPassword, setPasswordModal }) {
   const [updatingPassword, setUpdatingPassword] = useState(false);
   const user: User = auth.currentUser;
   const passRef: any = useRef("");
@@ -28,6 +29,10 @@ function PassModal({ forgotPassword, setForgotPassword }) {
         onSubmit={(e) => loginUser(e)}
         className={passwordStyles.password__wrapper}
       >
+        <AiOutlineClose
+          className={passwordStyles.password__closeButton}
+          onClick={() => setPasswordModal(false)}
+        />
         <h2 className={passwordStyles.password__header}>
           Verify it&apos;s you
         </h2>
