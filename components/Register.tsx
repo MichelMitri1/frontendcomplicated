@@ -52,9 +52,13 @@ function Register({ setIsLogin, setIsModal }) {
         userEmail.current.value,
         userPass.current.value
       );
-      addDoc(collection(db, "videos"), {
+      addDoc(collection(db, "completed"), {
         userId: userInfo.uid,
-        isCompleted: false,
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        premiumAccount: false,
       });
       setIsModal(false);
     } catch (error) {

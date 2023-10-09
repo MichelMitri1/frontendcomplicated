@@ -15,32 +15,57 @@ import { BiLockAlt } from "react-icons/bi";
 import { AiOutlineCheck } from "react-icons/ai";
 import Link from "next/link";
 import { data } from "../data.js";
+import { mapUrlToVideoId } from "../helpers/constants";
+import { getPathnameFromVideoId } from "../pages/html";
 
 function VideoSection({ user, setIsModal, setIsLogin }) {
   const userInfo = auth.currentUser;
-  const [completed, setCompleted] = useState(false);
-  const [docs, setDocs] = useState([]);
-  let found: any;
-  const [isLoadingButton, setIsLoadingButton] = useState(false);
+  const [completedVideos, setCompletedVideos] = useState(false);
+  // const [docs1, setDocs1] = useState([]);
+  const [docs2, setDocs2] = useState([]);
+  // let foundVideos: any,
+  let foundCompleted: any, filteredVideos: any, filteredVideosId: any;
   const [counter, setCounter] = useState(1);
+  const router: NextRouter = useRouter();
+  const routerPath = router.pathname;
+  let value = mapUrlToVideoId.get(routerPath);
 
-  async function getAllVideos() {
-    const q = query(collection(db, "videos"));
+  // async function getAllVideos() {
+  //   const q = query(collection(db, "videos"));
+  //   onSnapshot(q, (snapshot) =>
+  //     setDocs1(snapshot.docs.map((elem) => ({ ...elem.data(), id: elem.id })))
+  //   );
+  // }
+
+  async function getAllCompleted() {
+    const q = query(collection(db, "completed"));
     onSnapshot(q, (snapshot) =>
-      setDocs(snapshot.docs.map((elem) => ({ ...elem.data(), id: elem.id })))
+      setDocs2(snapshot.docs.map((elem) => ({ ...elem.data(), id: elem.id })))
     );
   }
 
+  let videoId = value;
+  const pathname = getPathnameFromVideoId(videoId);
+
   useEffect(() => {
-    getAllVideos();
-  }, []);
+    // getAllVideos();
+    getAllCompleted();
+  }, [router]);
 
   function nextVideo() {
-    if (counter >= data[data.length - 1].id) {
+    if (+counter >= +data[data.length - 1].id) {
       alert("there are no more videos");
       return;
     } else {
       setCounter(counter + 1);
+    }
+    if (pathname !== null) {
+      router.pathname = pathname;
+      +videoId === +value + counter;
+      console.log(videoId);
+      console.log(`The pathname for video ID ${videoId} is ${pathname}`);
+    } else {
+      console.log(`Video ID ${videoId} not found.`);
     }
   }
 
@@ -49,27 +74,40 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
       alert("There is no previous video you can watch");
       return;
     } else {
+      console.log(counter);
       setCounter(counter - 1);
+    }
+    if (pathname !== null) {
+      router.pathname = pathname;
+      +videoId == (+value - counter) * -1;
+      console.log(videoId);
+      console.log(`The pathname for video ID ${videoId} is ${pathname}`);
+    } else {
+      console.log(`Video ID ${videoId} not found.`);
     }
   }
 
   async function markComplete() {
-    setIsLoadingButton(false);
-    found = docs.find((id) => id.userId === userInfo.uid);
-    let codedId = found.id;
-    const markCompleted = doc(db, "videos", codedId);
-    if (!completed) {
-      setCompleted(true);
-      const newMarkCompleted = {
-        isCompleted: completed,
+    foundCompleted = docs2.find((id) => id.userId === userInfo.uid);
+    let codedCompleted = foundCompleted.id;
+    const completed = doc(db, "completed", codedCompleted);
+
+    filteredVideos = data.filter((data) => +data.id === +counter);
+    filteredVideosId = filteredVideos[0].id;
+    console.log(filteredVideosId);
+
+    if (!completedVideos) {
+      setCompletedVideos(true);
+      const newvideos = {
+        [filteredVideosId]: completedVideos,
       };
-      await updateDoc(markCompleted, newMarkCompleted);
+      await updateDoc(completed, newvideos);
     } else {
-      setCompleted(false);
-      const newMarkCompleted = {
-        isCompleted: completed,
+      setCompletedVideos(false);
+      const newvideos = {
+        [filteredVideosId]: completedVideos,
       };
-      await updateDoc(markCompleted, newMarkCompleted);
+      await updateDoc(completed, newvideos);
     }
   }
 
@@ -82,7 +120,7 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
     setIsModal(true);
     setIsLogin(false);
   }
-  const router: NextRouter = useRouter();
+
   return (
     <div className={videoSectionStyles.videoSection__container}>
       <div className={videoSectionStyles.videoSection__videoWrapper}>
@@ -141,11 +179,11 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
         )}
         <div className={videoSectionStyles.videoSection__buttonsWrapper}>
           {user ? (
-            docs
+            docs2
               .filter((id) => id.userId === userInfo.uid)
               .map((doc, index) => (
                 <div key={index}>
-                  {doc.isCompleted ? (
+                  {doc ? (
                     <button
                       onClick={() => markComplete()}
                       className={
@@ -179,30 +217,55 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
           </button>
         </div>
         <div className={videoSectionStyles.videoSection__videoInfoWrapper}>
-          {data
-            .filter((doc) => +doc.id === +counter)
-            .map((doc, index) => {
-              return (
-                <div key={index}>
-                  <h1
-                    className={videoSectionStyles.videoSection__videoInfoTitle}
-                  >
-                    {doc.videoDescription}
-                  </h1>
-                  <p className={videoSectionStyles.videoSection__videoInfoPara}>
-                    {doc.description}
-                  </p>
-                  <p className={videoSectionStyles.videoSection__videoInfo}>
-                    Instructor(s):{" "}
-                    <span style={{ color: "#4d4dff" }}>{doc.instructors}</span>
-                  </p>
-                  <p className={videoSectionStyles.videoSection__videoInfo2}>
-                    Current Attendees:
-                    <span style={{ color: "#4d4dff" }}> {doc.attendees}</span>
-                  </p>
-                </div>
-              );
-            })}
+          {user ? (
+            data
+              .filter((doc) => +doc.id === +counter)
+              .map((doc, index) => {
+                return (
+                  <div key={index}>
+                    <h1
+                      className={
+                        videoSectionStyles.videoSection__videoInfoTitle
+                      }
+                    >
+                      {doc.videoDescription}
+                    </h1>
+                    <p
+                      className={videoSectionStyles.videoSection__videoInfoPara}
+                    >
+                      {doc.description}
+                    </p>
+                    <p className={videoSectionStyles.videoSection__videoInfo}>
+                      Instructor(s):{" "}
+                      <span style={{ color: "#4d4dff" }}>
+                        {doc.instructors}
+                      </span>
+                    </p>
+                    <p className={videoSectionStyles.videoSection__videoInfo2}>
+                      Current Attendees:
+                      <span style={{ color: "#4d4dff" }}> {doc.attendees}</span>
+                    </p>
+                  </div>
+                );
+              })
+          ) : (
+            <div>
+              <h1 className={videoSectionStyles.videoSection__videoInfoTitle}>
+                ????????
+              </h1>
+              <p className={videoSectionStyles.videoSection__videoInfoPara}>
+                ????????
+              </p>
+              <p className={videoSectionStyles.videoSection__videoInfo}>
+                Instructor(s):{" "}
+                <span style={{ color: "#4d4dff" }}>????????</span>
+              </p>
+              <p className={videoSectionStyles.videoSection__videoInfo2}>
+                Current Attendees:
+                <span style={{ color: "#4d4dff" }}>????????</span>
+              </p>
+            </div>
+          )}
           <button
             className={videoSectionStyles.videoSection__bootcampButton}
             onClick={() => router.push("/pricing")}

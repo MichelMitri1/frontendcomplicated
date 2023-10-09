@@ -11,7 +11,7 @@ import Navbar from "../components/Navbar";
 import { FaCrown } from "react-icons/fa";
 import { NextRouter, useRouter } from "next/router";
 import { auth } from "../public/firebase";
-import { User, onAuthStateChanged } from "firebase/auth";
+import { User, onAuthStateChanged, updateProfile } from "firebase/auth";
 import Modal from "../components/Modal";
 import Sidebar from "../components/Sidebar";
 
@@ -21,7 +21,7 @@ function Account() {
   const [, setUser] = useState(null);
   const router: NextRouter = useRouter();
   const nameRef: any = useRef("") as unknown as LegacyRef<HTMLInputElement>;
-  const [name, setName] = useState("Michel");
+  const [name, setName] = useState("");
   const [passwordModal, setPasswordModal] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [isSidebar, setIsSidebar] = useState(false);
@@ -31,13 +31,25 @@ function Account() {
     onAuthStateChanged(auth, (user: any) => {
       if (user) {
         setUser(user);
+        setName(user.displayName);
       }
     });
   }, []);
 
   function saveName() {
-    setEditorOpen(false);
     setName(nameRef.current.value);
+    user.displayName === name;
+    updateProfile(user, {
+      displayName: name,
+    })
+      .then(() => {
+        window.location.reload();
+        alert("Name updated!");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    setEditorOpen(false);
   }
 
   return (
@@ -92,7 +104,7 @@ function Account() {
                         type="text"
                         className={accountStyles.account__editor}
                         ref={nameRef}
-                        value={name}
+                        // value={name}
                       />
                     </>
                   ) : (
@@ -138,7 +150,7 @@ function Account() {
             <div className={accountStyles.account__editWrapper}>
               <p>Frontend Simplified Free</p>
               <button
-                style={{ width: "150px" }}
+                style={{ width: "170px" }}
                 className={accountStyles.account__edit}
                 onClick={() => router.push("/pricing")}
               >
