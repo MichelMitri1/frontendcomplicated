@@ -16,7 +16,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import Link from "next/link";
 import { data } from "../data.js";
 import { mapUrlToVideoId } from "../helpers/constants";
-import { getPathnameFromVideoId } from "../pages/html";
+// import { getPathnameFromVideoId } from "../pages/html";
 
 function VideoSection({ user, setIsModal, setIsLogin }) {
   const userInfo = auth.currentUser;
@@ -45,7 +45,7 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
   }
 
   let videoId = value;
-  const pathname = getPathnameFromVideoId(videoId);
+  // const pathname = getPathnameFromVideoId(videoId);
 
   useEffect(() => {
     // getAllVideos();
@@ -59,14 +59,14 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
     } else {
       setCounter(counter + 1);
     }
-    if (pathname !== null) {
-      router.pathname = pathname;
-      +videoId === +value + counter;
-      console.log(videoId);
-      console.log(`The pathname for video ID ${videoId} is ${pathname}`);
-    } else {
-      console.log(`Video ID ${videoId} not found.`);
-    }
+    // if (pathname !== null) {
+    //   router.pathname = pathname;
+    //   +videoId === +value + counter;
+    //   console.log(videoId);
+    //   console.log(`The pathname for video ID ${videoId} is ${pathname}`);
+    // } else {
+    //   console.log(`Video ID ${videoId} not found.`);
+    // }
   }
 
   function previousVideo() {
@@ -77,14 +77,14 @@ function VideoSection({ user, setIsModal, setIsLogin }) {
       console.log(counter);
       setCounter(counter - 1);
     }
-    if (pathname !== null) {
-      router.pathname = pathname;
-      +videoId == (+value - counter) * -1;
-      console.log(videoId);
-      console.log(`The pathname for video ID ${videoId} is ${pathname}`);
-    } else {
-      console.log(`Video ID ${videoId} not found.`);
-    }
+    // if (pathname !== null) {
+    //   router.pathname = pathname;
+    //   +videoId == (+value - counter) * -1;
+    //   console.log(videoId);
+    //   console.log(`The pathname for video ID ${videoId} is ${pathname}`);
+    // } else {
+    //   console.log(`Video ID ${videoId} not found.`);
+    // }
   }
 
   async function markComplete() {
