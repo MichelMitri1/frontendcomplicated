@@ -7,7 +7,7 @@ import { mapUrlToVideoId } from "../helpers/constants";
 import { auth } from "../public/firebase";
 import Navbar from "../components/Navbar";
 
-function react() {
+function React() {
   const router = useRouter();
   const routerPath = router.pathname;
   const value: any = mapUrlToVideoId.get(routerPath);
@@ -46,13 +46,13 @@ function react() {
   );
 }
 
-export default react;
+export default React;
 
-export function getPathnameFromVideoId(videoId: any) {
-  for (const [pathname, id] of mapUrlToVideoId.entries()) {
-    if (id === videoId) {
-      return pathname;
-    }
-  }
-  return null;
-}
+// export function getPathnameFromVideoId(videoId: any) {
+//   for (const [pathname, id] of mapUrlToVideoId.entries()) {
+//     if (id === videoId) {
+//       return pathname;
+//     }
+//   }
+//   return null;
+// }
