@@ -7,7 +7,7 @@
 // import { mapUrlToVideoId } from "../helpers/constants";
 // import { useRouter } from "next/router";
 
-// function Javascript() {
+function Javascript() {
 //   const router = useRouter();
 //   const routerPath = router.pathname;
 //   const value = mapUrlToVideoId.get(routerPath);
@@ -25,31 +25,32 @@
 //     });
 //   }, []);
 
-//   return (
-//     <>
-//       <Navbar
-//         user={user}
-//         setIsLogin={setIsLogin}
-//         setIsModal={setIsModal}
-//         setIsSidebar={setIsSidebar}
-//         isSidebar={isSidebar}
-//       />
-//       <div style={{ display: "flex" }}>
-//         {isSidebar ? <Sidebar user={user} /> : null}
-//         <VideoSection
-//           user={user}
-//           setIsLogin={setIsLogin}
-//           setIsModal={setIsModal}
-//         />
-//       </div>
-//     </>
-//   );
-// }
+  return (
+    <>
+    hello
+     {/* <Navbar
+       user={user}
+       setIsLogin={setIsLogin}
+       setIsModal={setIsModal}
+       setIsSidebar={setIsSidebar}
+       isSidebar={isSidebar}
+     />
+     <div style={{ display: "flex" }}>
+       {isSidebar ? <Sidebar user={user} /> : null}
+       <VideoSection
+         user={user}
+         setIsLogin={setIsLogin}
+         setIsModal={setIsModal}
+       />
+     </div> */}
+   </>
+ );
+}
 
 // export default Javascript;
 
 // export function getPathnameFromVideoId(videoId: any) {
-//   for (const [pathname, id] of mapUrlToVideoId.entries()) {
+//  for (const [pathname, id] of mapUrlToVideoId.entries()) {
 //     if (id === videoId) {
 //       return pathname;
 //     }
