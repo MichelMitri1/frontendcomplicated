@@ -21,13 +21,17 @@ export default function Home() {
   const [forgotPassword, setForgotPassword] = useState(false);
   const googleAuth: GoogleAuthProvider = new GoogleAuthProvider();
 
-  // if (isModal) {
-  //   document.body.classList.add("stop-scrolling");
-  // }
+  if (isModal) {
+    if (typeof document !== "undefined") {
+      document.body.classList.add("stop-scrolling");
+    }
+  }
 
-  // if (!isModal) {
-  //   document.body.classList.remove("stop-scrolling");
-  // }
+  if (!isModal) {
+    if (typeof document !== "undefined") {
+      document.body.classList.remove("stop-scrolling");
+    }
+  }
 
   return (
     <div className={styles.container}>

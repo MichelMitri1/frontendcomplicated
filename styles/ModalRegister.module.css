@@ -107,12 +107,13 @@
 
 @media (max-width: 900px) {
   .modal__wrapper {
-    padding: 16px;
+    padding: 0px 16px;
     border-radius: 10px;
     width: 100%;
   }
 
   .modal__closeButtonReg{
+    margin: 12px 0px;
     display: block;
   }
 }
