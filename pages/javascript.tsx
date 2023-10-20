@@ -47,7 +47,7 @@ function Javascript() {
  );
 }
 
-// export default Javascript;
+export default Javascript;
 
 // export function getPathnameFromVideoId(videoId: any) {
 //  for (const [pathname, id] of mapUrlToVideoId.entries()) {
