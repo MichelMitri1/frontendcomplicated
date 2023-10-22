@@ -1,4 +1,4 @@
-.forgotPass__container {
+.changePass__container {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -7,19 +7,19 @@
   max-width: 350px;
 }
 
-.forgotPass__title {
+.changePass__title {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.forgotPass__para {
+.changePass__para {
   color: rgba(128, 128, 128, 0.7);
   font-size: 14px;
   line-height: 1.5;
 }
 
-.forgotPass__inputPass {
+.changePass__inputPass {
   width: 100%;
   max-width: 900px;
   height: 40px;
@@ -31,11 +31,11 @@
   transition: all 200ms ease;
 }
 
-.forgotPass__inputPass:focus {
+.changePass__inputPass:focus {
   border: 1px solid #4d4dff;
 }
 
-.forgotPass__continue {
+.changePass__continue {
   border: none;
   display: flex;
   align-items: center;
@@ -50,15 +50,15 @@
   background: #4d4dff;
 }
 
-.forgotPass__continue:hover {
+.changePass__continue:hover {
   opacity: 0.7;
 }
 
-.forgotPass__continue:active {
+.changePass__continue:active {
   transform: translateY(1px);
 }
 
-.forgotPass__loadingButton {
+.changePass__loadingButton {
   height: 40px;
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@
   border-radius: 5px;
 }
 
-.forgotPass__spinner {
+.changePass__spinner {
   max-width: 25px;
   border-radius: 50%;
   padding: 12px;

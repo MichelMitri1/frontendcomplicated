@@ -91,7 +91,7 @@ function PassModal({ setForgotPassword, setPasswordModal }) {
           style={{ color: "#717477", fontSize: "small" }}
           onClick={(e) => openForgotPass(e)}
         >
-          Forgot password?
+          Change password?
         </a>
       </form>
     </div>

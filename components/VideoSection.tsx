@@ -18,14 +18,13 @@ import { data } from "../data.js";
 import { mapUrlToVideoId } from "../helpers/constants";
 // import { getPathnameFromVideoId } from "../pages/html";
 
-function VideoSection({ user, setIsModal, setIsLogin }) {
+function VideoSection({ user, setIsModal, setIsLogin, counter, setCounter }) {
   const userInfo = auth.currentUser;
   const [completedVideos, setCompletedVideos] = useState(false);
   // const [docs1, setDocs1] = useState([]);
   const [docs2, setDocs2] = useState([]);
   // let foundVideos: any,
   let foundCompleted: any, filteredVideos: any, filteredVideosId: any;
-  const [counter, setCounter] = useState(1);
   const router: NextRouter = useRouter();
   const routerPath = router.pathname;
   let value = mapUrlToVideoId.get(routerPath);

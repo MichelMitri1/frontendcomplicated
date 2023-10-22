@@ -10,7 +10,7 @@ import {
 import { FaLock } from "react-icons/fa";
 import { SiPowerpages } from "react-icons/si";
 
-function Week4({ expanded, handleChange }) {
+function Week4({ expanded, handleChange, setCounter }) {
   return (
     <Accordion
       className={sidebarStyles.sidebar__week4Wrapper}
@@ -34,11 +34,30 @@ function Week4({ expanded, handleChange }) {
           <div className={sidebarStyles.sidebar__week4Info}>
             <p className={sidebarStyles.sidebar__weekTitle}>Guided Projects</p>
             <ul className={sidebarStyles.sidebar__listWrapper}>
-              <li className={sidebarStyles.sidebar__list}>
-                Advanced Portfolio
+              <li className={sidebarStyles.sidebar__listLocked}>
+                <div className={sidebarStyles.sidebar__locked}>
+                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                  Advanced portfolio
+                </div>
+                <a href="" style={{ fontSize: "12px" }}>
+                  Unlock
+                </a>
               </li>
-              <li className={sidebarStyles.sidebar__list}>E-Commerce App</li>
-              <li className={sidebarStyles.sidebar__list}>Final Preparation</li>
+              <li className={sidebarStyles.sidebar__listLocked}>
+                <div className={sidebarStyles.sidebar__locked}>
+                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                  E-Commerce app
+                </div>
+                <a href="" style={{ fontSize: "12px" }}>
+                  Unlock
+                </a>
+              </li>
+              <li
+                className={sidebarStyles.sidebar__list}
+                onClick={() => setCounter(4)}
+              >
+                Final Preparation
+              </li>
             </ul>
             <p className={sidebarStyles.sidebar__weekTitle}>
               Individual Project

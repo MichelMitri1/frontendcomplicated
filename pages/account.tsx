@@ -62,7 +62,7 @@ function Account() {
         isSidebar={isSidebar}
       />
       <div className={accountStyles.account__container}>
-        {isSidebar ? <Sidebar user={user} /> : null}
+        {isSidebar ? <Sidebar user={user} setCounter={undefined} /> : null}
         <div className={accountStyles.account__wrapper}>
           {passwordModal ? (
             <Modal
@@ -104,7 +104,6 @@ function Account() {
                         type="text"
                         className={accountStyles.account__editor}
                         ref={nameRef}
-                        // value={name}
                       />
                     </>
                   ) : (

@@ -10,7 +10,7 @@ import { DiCss3Full } from "react-icons/di";
 import { FaLock } from "react-icons/fa";
 import sidebarStyles from "../styles/Sidebar.module.css";
 
-function Week2({ expanded, handleChange }) {
+function Week2({ expanded, handleChange, setCounter }) {
   return (
     <Accordion
       className={sidebarStyles.sidebar__week2Wrapper}
@@ -34,14 +34,39 @@ function Week2({ expanded, handleChange }) {
           <div className={sidebarStyles.sidebar__week2Info}>
             <p className={sidebarStyles.sidebar__weekTitle}>Mini Project</p>
             <ul className={sidebarStyles.sidebar__listWrapper}>
-              <li className={sidebarStyles.sidebar__list}>Github Setup</li>
-              <li className={sidebarStyles.sidebar__list}>
-                Build your website
+              <li
+                className={sidebarStyles.sidebar__list}
+                onClick={() => setCounter(2)}
+              >
+                Github Setup
               </li>
-              <li className={sidebarStyles.sidebar__list}>
-                Style your website
+              <li className={sidebarStyles.sidebar__listLocked}>
+                <div className={sidebarStyles.sidebar__locked}>
+                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                  Build your website
+                </div>
+                <a href="" style={{ fontSize: "12px" }}>
+                  Unlock
+                </a>
               </li>
-              <li className={sidebarStyles.sidebar__list}>Responsiveness</li>
+              <li className={sidebarStyles.sidebar__listLocked}>
+                <div className={sidebarStyles.sidebar__locked}>
+                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                  Style your website
+                </div>
+                <a href="" style={{ fontSize: "12px" }}>
+                  Unlock
+                </a>
+              </li>
+              <li className={sidebarStyles.sidebar__listLocked}>
+                <div className={sidebarStyles.sidebar__locked}>
+                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                  Responsiveness
+                </div>
+                <a href="" style={{ fontSize: "12px" }}>
+                  Unlock
+                </a>
+              </li>
             </ul>
             <p className={sidebarStyles.sidebar__weekTitle}>Projects</p>
             <ul className={sidebarStyles.sidebar__listWrapper}>

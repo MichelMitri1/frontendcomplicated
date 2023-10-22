@@ -20,6 +20,7 @@ export default function Home() {
   const [passwordModal, setPasswordModal] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const googleAuth: GoogleAuthProvider = new GoogleAuthProvider();
+  const [counter, setCounter] = useState(1);
 
   if (isModal) {
     if (typeof document !== "undefined") {
@@ -56,11 +57,13 @@ export default function Home() {
             auth={auth}
           />
         ) : null}
-        {isSidebar ? <Sidebar user={user} /> : null}
+        {isSidebar ? <Sidebar user={user} setCounter={setCounter} /> : null}
         <VideoSection
           user={user}
           setIsModal={setIsModal}
           setIsLogin={setIsLogin}
+          counter={counter}
+          setCounter={setCounter}
         />
       </div>
       {/* </div> */}

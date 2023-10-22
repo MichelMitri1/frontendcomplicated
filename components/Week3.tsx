@@ -10,7 +10,7 @@ import {
 import { FaLock } from "react-icons/fa";
 import { SiJavascript } from "react-icons/si";
 
-function Week3({ expanded, handleChange }) {
+function Week3({ expanded, handleChange, setCounter }) {
   return (
     <Accordion
       className={sidebarStyles.sidebar__week3Wrapper}
@@ -43,14 +43,8 @@ function Week3({ expanded, handleChange }) {
                   Unlock
                 </a>
               </li>
-              <li className={sidebarStyles.sidebar__listLocked}>
-                <div className={sidebarStyles.sidebar__locked}>
-                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
-                  Crash Course
-                </div>
-                <a href="" style={{ fontSize: "12px" }}>
-                  Unlock
-                </a>
+              <li className={sidebarStyles.sidebar__list} onClick={() => setCounter(3)}>
+                Crash Course
               </li>
               <li className={sidebarStyles.sidebar__listLocked}>
                 <div className={sidebarStyles.sidebar__locked}>
@@ -64,12 +58,32 @@ function Week3({ expanded, handleChange }) {
             </ul>
             <p className={sidebarStyles.sidebar__weekTitle}>Problem Solving</p>
             <ul className={sidebarStyles.sidebar__listWrapper}>
-              <li className={sidebarStyles.sidebar__list}>
-                Beginner Challenges
+            <li className={sidebarStyles.sidebar__listLocked}>
+                <div className={sidebarStyles.sidebar__locked}>
+                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                  Beginner challenges
+                </div>
+                <a href="" style={{ fontSize: "12px" }}>
+                  Unlock
+                </a>
               </li>
-              <li className={sidebarStyles.sidebar__list}>Medius Challenges</li>
-              <li className={sidebarStyles.sidebar__list}>
-                Advanced Challenges
+              <li className={sidebarStyles.sidebar__listLocked}>
+                <div className={sidebarStyles.sidebar__locked}>
+                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                  Medium challenges
+                </div>
+                <a href="" style={{ fontSize: "12px" }}>
+                  Unlock
+                </a>
+              </li>
+              <li className={sidebarStyles.sidebar__listLocked}>
+                <div className={sidebarStyles.sidebar__locked}>
+                  <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                  Advanced challenges
+                </div>
+                <a href="" style={{ fontSize: "12px" }}>
+                  Unlock
+                </a>
               </li>
             </ul>
           </div>

@@ -10,7 +10,7 @@ import { AiFillHtml5 } from "react-icons/ai";
 import { FaLock } from "react-icons/fa";
 import sidebarStyles from "../styles/Sidebar.module.css";
 
-function Week1({ expanded, handleChange }) {
+function Week1({ expanded, handleChange, setCounter }) {
   return (
     <Accordion
       className={sidebarStyles.sidebar__week1Wrapper}
@@ -33,12 +33,28 @@ function Week1({ expanded, handleChange }) {
         <Typography>
           <p className={sidebarStyles.sidebar__weekTitle}>HTML</p>
           <ul className={sidebarStyles.sidebar__listWrapper}>
-            <li className={sidebarStyles.sidebar__list}>Crash Course</li>
-            <li className={sidebarStyles.sidebar__list}>Best Practices</li>
+            <li className={sidebarStyles.sidebar__list} onClick={() => setCounter(1)}>Crash Course</li>
+            <li className={sidebarStyles.sidebar__listLocked}>
+              <div className={sidebarStyles.sidebar__locked}>
+                <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                Best practices
+              </div>
+              <a href="" style={{ fontSize: "12px" }}>
+                Unlock
+              </a>
+            </li>
           </ul>
           <p className={sidebarStyles.sidebar__weekTitle}>CSS</p>
           <ul className={sidebarStyles.sidebar__listWrapper}>
-            <li className={sidebarStyles.sidebar__list}>Crash Course</li>
+            <li className={sidebarStyles.sidebar__listLocked}>
+              <div className={sidebarStyles.sidebar__locked}>
+                <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />
+                Crash course
+              </div>
+              <a href="" style={{ fontSize: "12px" }}>
+                Unlock
+              </a>
+            </li>
             <li className={sidebarStyles.sidebar__listLocked}>
               <div className={sidebarStyles.sidebar__locked}>
                 <FaLock style={{ fontSize: "10px", color: "lightgrey" }} />

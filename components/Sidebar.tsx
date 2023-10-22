@@ -9,7 +9,7 @@ import Week2 from "./Week2";
 import Week3 from "./Week3";
 import Week4 from "./Week4";
 
-function Sidebar({ user }) {
+function Sidebar({ user, setCounter }) {
   const router: NextRouter = useRouter();
   const [expanded, setExpanded]: any = useState(false);
   const handleChange = (isExpanded: boolean, panel: string) => {
@@ -39,10 +39,10 @@ function Sidebar({ user }) {
             </div>
             <p style={{ paddingLeft: "8px" }}>Coding roadmap</p>
             <div className={sidebarStyles.sidebar__weeks}>
-              <Week1 expanded={expanded} handleChange={handleChange} />
-              <Week2 expanded={expanded} handleChange={handleChange} />
-              <Week3 expanded={expanded} handleChange={handleChange} />
-              <Week4 expanded={expanded} handleChange={handleChange} />
+              <Week1 expanded={expanded} handleChange={handleChange} setCounter={setCounter} />
+              <Week2 expanded={expanded} handleChange={handleChange} setCounter={setCounter}/>
+              <Week3 expanded={expanded} handleChange={handleChange} setCounter={setCounter}/>
+              <Week4 expanded={expanded} handleChange={handleChange} setCounter={setCounter}/>
             </div>
             <div className={sidebarStyles.sidebar__jobGuaranteeWrapper}>
               <h4 className={sidebarStyles.sidebar__jobGuaranteeTitle}>

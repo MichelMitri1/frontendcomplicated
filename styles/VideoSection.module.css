@@ -262,4 +262,7 @@
   .videoSection__video {
     height: 250px;
   }
+  .videoSection__lessonCompleted {
+    padding: 0px 8px;
+  }
 }

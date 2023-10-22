@@ -5,7 +5,9 @@ import Register from "./Register";
 import Image from "next/image";
 import Login from "./Login";
 import PassModal from "./PassModal";
-import ForgotPass from "./ForgotPass";
+import ForgotPass from "./PassChanging";
+import { useState } from "react";
+import ChangePass from "./ChangePass";
 
 function Modal({
   isLogin,
@@ -18,6 +20,7 @@ function Modal({
   setPasswordModal,
   isModal,
 }) {
+  const [emailMatching, setEmailMatching] = useState(false);
   function setModalFalse() {
     if (passwordModal) {
       setPasswordModal(false);
@@ -32,10 +35,14 @@ function Modal({
         <div className={modalStyles.modal__subcontainer}>
           {passwordModal ? (
             forgotPassword ? (
-              <ForgotPass
-                forgotPassword={forgotPassword}
-                setForgotPassword={setForgotPassword}
-              />
+              emailMatching ? (
+                <ChangePass setEmailMatching={setEmailMatching} setPasswordModal={setPasswordModal}/>
+              ) : (
+                <ForgotPass
+                  setForgotPassword={setForgotPassword}
+                  setEmailMatching={setEmailMatching}
+                />
+              )
             ) : (
               <PassModal
                 setPasswordModal={setPasswordModal}
