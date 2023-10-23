@@ -16,6 +16,7 @@ function ChangePass({ setEmailMatching, setPasswordModal }) {
     ""
   ) as unknown as MutableRefObject<HTMLInputElement>;
   const [changingPass, setChangingPass] = useState(false);
+  const [passError, setPassError] = useState("");
   const user = auth.currentUser;
 
   async function changePassword(e: any) {
@@ -38,7 +39,7 @@ function ChangePass({ setEmailMatching, setPasswordModal }) {
       setPasswordModal(false);
       alert("Password has been updated!");
     } catch (error) {
-      console.log(error);
+      setPassError(error.message);
       setChangingPass(false);
     }
   }
@@ -59,11 +60,13 @@ function ChangePass({ setEmailMatching, setPasswordModal }) {
         All is well, enter your new password to change the old one.
       </p>
       <span>
+        <p style={{ color: "#e58e73", fontSize: "14px" }}>{passError}</p>
         <p
           style={{
             color: "rgb(86, 89, 93)",
             fontSize: "small",
             fontWeight: "bold",
+            marginTop: "12px",
           }}
         >
           Old Password

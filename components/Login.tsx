@@ -16,6 +16,7 @@ function Login({ setIsLogin, auth, setIsModal }): any {
     boolean,
     Dispatch<SetStateAction<boolean>>
   ] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
   async function loginUser(e: any): Promise<void> {
     e.preventDefault();
@@ -33,7 +34,7 @@ function Login({ setIsLogin, auth, setIsModal }): any {
 
       setIsModal(false);
     } catch (error) {
-      alert(error);
+      setLoginError(error.message);
       setUserLoggingIn(false);
     }
   }
@@ -60,11 +61,13 @@ function Login({ setIsLogin, auth, setIsModal }): any {
       >
         <h2 className={modalStyles.modal__header}>Sign ito your account</h2>
         <div style={{ display: "flex", flexDirection: "column" }}>
+          <p style={{ color: "#e58e73", fontSize: "14px" }}>{loginError}</p>
           <p
             style={{
               color: "#56595D",
               fontSize: "small",
               fontWeight: "bold",
+              marginTop: "12px",
             }}
           >
             Email

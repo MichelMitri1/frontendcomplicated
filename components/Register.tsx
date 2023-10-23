@@ -9,20 +9,34 @@ import {
   Dispatch,
   MutableRefObject,
   SetStateAction,
+  useEffect,
   useRef,
   useState,
 } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, query } from "firebase/firestore";
 import { AiOutlineClose } from "react-icons/ai";
 
 function Register({ setIsLogin, setIsModal }) {
   const userName = useRef("") as unknown as MutableRefObject<HTMLInputElement>;
   const userEmail = useRef("") as unknown as MutableRefObject<HTMLInputElement>;
   const userPass = useRef("") as unknown as MutableRefObject<HTMLInputElement>;
+  const [docs2, setDocs2] = useState([]);
+
   const [userLoggingIn, setUserLoggingIn]: [
     boolean,
     Dispatch<SetStateAction<boolean>>
   ] = useState(false);
+
+  async function getAllCompleted() {
+    const q = query(collection(db, "completed"));
+    onSnapshot(q, (snapshot) =>
+      setDocs2(snapshot.docs.map((elem) => ({ ...elem.data(), id: elem.id })))
+    );
+  }
+
+  useEffect(() => {
+    getAllCompleted();
+  }, []);
 
   async function registerUser(e: any): Promise<void> {
     e.preventDefault();
@@ -33,13 +47,13 @@ function Register({ setIsLogin, setIsModal }) {
     ) {
       return;
     }
-
     setUserLoggingIn(true);
     await createUserWithEmailAndPassword(
       auth,
       userEmail.current.value,
       userPass.current.value
     );
+
     const userInfo: any = auth.currentUser;
     userInfo.displayName = userName.current.value;
     await updateProfile(auth.currentUser, {
@@ -52,6 +66,7 @@ function Register({ setIsLogin, setIsModal }) {
         userEmail.current.value,
         userPass.current.value
       );
+
       addDoc(collection(db, "completed"), {
         userId: userInfo.uid,
         1: false,

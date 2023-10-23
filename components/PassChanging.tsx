@@ -7,6 +7,7 @@ function PassChanging({ setForgotPassword, setEmailMatching }) {
   const user = auth.currentUser;
   const emailRef = useRef("") as unknown as MutableRefObject<HTMLInputElement>;
   const [forgotPassButton, setForgotPassButton] = useState(false);
+  const [emailError, setEmailError] = useState("");
 
   function checkEmailIfSame(e) {
     e.preventDefault();
@@ -16,9 +17,7 @@ function PassChanging({ setForgotPassword, setEmailMatching }) {
     } else if (emailRef.current.value === user.email) {
       setEmailMatching(true);
     } else {
-      alert(
-        "The email inputted is different than the account email. Please try again."
-      );
+      setEmailError("Wrong email. Please try again.");
     }
   }
 
@@ -35,15 +34,16 @@ function PassChanging({ setForgotPassword, setEmailMatching }) {
         Change your password
       </h2>
       <p className={forgotPassStyles.forgotPass__para}>
-        Dont worry, verify your email first to then change your
-        password.
+        Dont worry, verify your email first to then change your password.
       </p>
       <span>
+        <p style={{ color: "#e58e73", fontSize: "14px" }}>{emailError}</p>
         <p
           style={{
             color: "rgb(86, 89, 93)",
             fontSize: "small",
             fontWeight: "bold",
+            marginTop: "12px",
           }}
         >
           Email
