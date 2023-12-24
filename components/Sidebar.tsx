@@ -8,6 +8,8 @@ import Week1 from "./Week1";
 import Week2 from "./Week2";
 import Week3 from "./Week3";
 import Week4 from "./Week4";
+import Week5 from "./Week5";
+import Week6 from "./Week6";
 
 function Sidebar({ user, setCounter }) {
   const router: NextRouter = useRouter();
@@ -39,10 +41,57 @@ function Sidebar({ user, setCounter }) {
             </div>
             <p style={{ paddingLeft: "8px" }}>Coding roadmap</p>
             <div className={sidebarStyles.sidebar__weeks}>
-              <Week1 expanded={expanded} handleChange={handleChange} setCounter={setCounter} />
-              <Week2 expanded={expanded} handleChange={handleChange} setCounter={setCounter}/>
-              <Week3 expanded={expanded} handleChange={handleChange} setCounter={setCounter}/>
-              <Week4 expanded={expanded} handleChange={handleChange} setCounter={setCounter}/>
+              <Week1
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week2
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week3
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week4
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week5
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week6
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week6
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week6
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week6
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              <Week6
+                expanded={expanded}
+                handleChange={handleChange}
+                setCounter={setCounter}
+              />
+              
             </div>
             <div className={sidebarStyles.sidebar__jobGuaranteeWrapper}>
               <h4 className={sidebarStyles.sidebar__jobGuaranteeTitle}>

@@ -3,14 +3,25 @@ import pricingStyles from "../styles/Pricing.module.css";
 import { AiOutlineCheck, AiOutlineDown } from "react-icons/ai";
 import { useRouter, NextRouter } from "next/router";
 import Plans from "../components/Plans";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { auth } from "../public/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import Register from "../components/Register";
 
 function Pricing() {
+  const [user, setUser] = useState(null);
   const router: NextRouter = useRouter();
   const [planOpened, setPlanOpened]: [
     boolean,
     Dispatch<SetStateAction<boolean>>
   ] = useState(false);
+
+  const [isModal, setIsModal] = useState(false);
+
+  function registerUser() {
+    router.push("/");
+    setIsModal(true);
+  }
 
   function openPlan() {
     if (!planOpened) {
@@ -20,6 +31,13 @@ function Pricing() {
     }
   }
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user: any) => {
+      if (user) {
+        setUser(user);
+      }
+    });
+  }, []);
   return (
     <div className={pricingStyles.pricing__container}>
       <nav
@@ -42,9 +60,18 @@ function Pricing() {
                 Ideal for those who want to learn the basics of programming. You
                 will have a solid foundation after all crash courses.
               </p>
-              <button className={pricingStyles.pricing__plan1Button}>
-                You Already Got it!
-              </button>
+              {user ? (
+                <button className={pricingStyles.pricing__plan1Button}>
+                  You Already Got it!
+                </button>
+              ) : (
+                <button
+                  className={pricingStyles.pricing__plan2Button}
+                  onClick={() => registerUser()}  
+                >
+                  Get it now!
+                </button>
+              )}
             </div>
             <div className={pricingStyles.pricing__inclusionsWrapper}>
               <h2 className={pricingStyles.pricing__inclusionTitle}>
@@ -175,6 +202,9 @@ function Pricing() {
           {" "}
         </path>
       </svg>
+      <div style={{ display: "none" }}>
+        <Register setIsLogin={undefined} setIsModal={setIsModal} />
+      </div>
     </div>
   );
 }

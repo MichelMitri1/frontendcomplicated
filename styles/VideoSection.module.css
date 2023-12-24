@@ -187,6 +187,9 @@
 .videoSection__loginButton,
 .videoSection__registerButton {
   border: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
   height: 40px;
   font-size: 16px;
   border-radius: 4px;
@@ -202,6 +205,7 @@
 
 .videoSection__registerButton {
   color: black;
+  background-color: rgb(240, 240, 240);
 }
 
 .videoSection__loginButton:hover,

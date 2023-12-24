@@ -161,18 +161,20 @@ function VideoSection({ user, setIsModal, setIsLogin, counter, setCounter }) {
             <div
               className={videoSectionStyles.videoSection__videoButtonsWrapper}
             >
-              <button
+              <a
+                href="#"
                 className={videoSectionStyles.videoSection__loginButton}
                 onClick={() => setLogin()}
               >
                 Login
-              </button>
-              <button
+              </a>
+              <a
+                href="#"
                 className={videoSectionStyles.videoSection__registerButton}
                 onClick={() => setRegister()}
               >
                 Register
-              </button>
+              </a>
             </div>
           </div>
         )}
@@ -358,24 +360,3 @@ function VideoSection({ user, setIsModal, setIsLogin, counter, setCounter }) {
 }
 
 export default VideoSection;
-
-// <iframe
-//   src="https://player.vimeo.com/video/854596225?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-//   width="100%"
-//   height="726px"
-//   frameBorder="0"
-//   allow="autoplay; fullscreen; picture-in-picture"
-//   className={videoSectionStyles.videoSection__video}
-//   title="dont buy no weed from the gas station"
-// ></iframe>
-
-// <iframe
-//   src="https://player.vimeo.com/video/833236557?h=39bef521f3&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-//   width="100%"
-//   height="726px"
-//   frameBorder="0"
-//   allow="autoplay; fullscreen; picture-in-picture"
-//   allowFullScreen
-//   title="Biggest Miss"
-//   className={videoSectionStyles.videoSection__video}
-// ></iframe>

@@ -32,6 +32,8 @@ function Account() {
       if (user) {
         setUser(user);
         setName(user.displayName);
+      } else {
+        router.push("/");
       }
     });
   }, []);

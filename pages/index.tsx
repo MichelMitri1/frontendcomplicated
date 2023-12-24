@@ -26,9 +26,7 @@ export default function Home() {
     if (typeof document !== "undefined") {
       document.body.classList.add("stop-scrolling");
     }
-  }
-
-  if (!isModal) {
+  } else {
     if (typeof document !== "undefined") {
       document.body.classList.remove("stop-scrolling");
     }

@@ -11,7 +11,6 @@ function Navbar({ setIsModal, setIsLogin, user, setIsSidebar, isSidebar }) {
   const router: NextRouter = useRouter();
   const [, setUser]: [any, Dispatch<any>] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  // auth.signOut();
 
   function openMenu() {
     setMenuOpen(true);
@@ -111,12 +110,13 @@ function Navbar({ setIsModal, setIsLogin, user, setIsSidebar, isSidebar }) {
               <Link href="/pricing" className={NavbarStyles.navbar__setupLink}>
                 Bootcamp
               </Link>
-              <span
+              <a
+                href="#"
                 onClick={() => loginUser()}
                 className={NavbarStyles.navbar__setupLink}
               >
                 Login
-              </span>
+              </a>
               <button
                 className={NavbarStyles.navbar__registerButton}
                 onClick={() => registerUser()}
